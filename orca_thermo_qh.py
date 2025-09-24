@@ -45,7 +45,7 @@ def get_moments_amu_bohr2_from_orca(text: str):
     nums = [float(x) for x in re.findall(r"[-+]?\d+(?:\.\d+)?", m_mhz.group(1))]
     B_Hz = [x * 1e6 for x in nums]
     I_SI = [h / (8.0 * np.pi**2 * B) for B in B_Hz]             # kg·m²
-    conv = 1.0 / (amu_to_kg * bohr_to_m**2)                     # → amu·bohr²
+    conv = 1.0 / (amu_to_kg * bohr_to_m**2)                     # amu·bohr²
     I1, I2, I3 = (I * conv for I in I_SI)
     return float(I1), float(I2), float(I3)
 
@@ -114,3 +114,4 @@ print(f"E = {E_final:.10f} Hartree")
 print(f"H = {H_final:.10f} Hartree")
 print(f"G = {G_final:.10f} Hartree")
 print(f"qG (Quasiharmonic corrected Gibbs) = {qG_final:.10f} Hartree")
+
